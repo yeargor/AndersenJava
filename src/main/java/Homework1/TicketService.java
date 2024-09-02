@@ -8,13 +8,13 @@ public class TicketService {
 
         Ticket[] tickets = generateTickets(10);
 
-        for (Ticket t : tickets){
-            System.out.println(t.toString());
+        for (Ticket ticket : tickets){
+            System.out.println(ticket.toString());
         }
         System.out.println("Founded ticket: " + findByID(tickets, "3").toString());
     }
 
-    public static Ticket[] generateTickets(int len){
+    private static Ticket[] generateTickets(int len){
 
         Random random = new Random();
         Ticket[] tickets = new Ticket[len];
@@ -35,10 +35,12 @@ public class TicketService {
         return tickets;
     }
 
-    public static Ticket findByID(Ticket[] tickets, String id){
+    private static Ticket findByID(Ticket[] tickets, String id){
 
-        for (Ticket t : tickets){
-            if (Objects.equals(t.getId(), id)) return t;
+        for (Ticket ticket : tickets){
+            if (Objects.equals(ticket.getId(), id)){
+                return ticket;
+            }
         }
 
         return null;

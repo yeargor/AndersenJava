@@ -1,12 +1,9 @@
 package Homework1;
 
-import java.math.BigDecimal; //develop branch -> feature branch -> in a feature branch
-                            //modify ticket servise class to store 10 Ticket objects
-                            //-> add  TicketService, add Ticket (#2HW) -> FIRST commit
-                            //-> in TicketService add findByID() -> SECOND commit
-                            //->
+import java.math.BigDecimal;
 
 public class Ticket {
+
     private String id;
     private String concertHall;
     private int eventCode;
@@ -71,6 +68,10 @@ public class Ticket {
 
     public long getCreatedAt() {
         return createdAt;
+    }
+
+    public String getId() {
+        return id;
     }
 
     private String validateLength(String value, String varName, int maxLength) {

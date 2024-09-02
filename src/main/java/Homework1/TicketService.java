@@ -1,5 +1,6 @@
 package Homework1;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class TicketService {
@@ -10,6 +11,7 @@ public class TicketService {
         for (Ticket t : tickets){
             System.out.println(t.toString());
         }
+        System.out.println("Founded ticket: " + findByID(tickets, "3").toString());
     }
 
     public static Ticket[] generateTickets(int len){
@@ -31,5 +33,14 @@ public class TicketService {
         }
 
         return tickets;
+    }
+
+    public static Ticket findByID(Ticket[] tickets, String id){
+
+        for (Ticket t : tickets){
+            if (Objects.equals(t.getId(), id)) return t;
+        }
+
+        return null;
     }
 }

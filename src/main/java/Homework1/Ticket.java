@@ -1,3 +1,5 @@
+package Homework1;
+
 import java.math.BigDecimal;
 
 public class Ticket {

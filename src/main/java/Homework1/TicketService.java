@@ -1,5 +1,7 @@
 package Homework1;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
@@ -12,6 +14,23 @@ public class TicketService {
             System.out.println(ticket.toString());
         }
         System.out.println("Founded ticket: " + findByID(tickets, "3").toString());
+
+        List<Ticket> ticketsForSectorA = getTicketsForSector(tickets, Sector.A);
+
+        System.out.println("Tickets for sector A: ");
+        for (Ticket ticket : ticketsForSectorA) {
+            System.out.println(ticket);
+        }
+    }
+
+    public static List<Ticket> getTicketsForSector(Ticket[] tickets, Sector sector) {
+        List<Ticket> result = new ArrayList<>();
+        for (Ticket ticket : tickets) {
+            if (ticket.getStadiumSector() == sector) {
+                result.add(ticket);
+            }
+        }
+        return result;
     }
 
     private static Ticket[] generateTickets(int len){

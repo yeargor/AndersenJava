@@ -62,6 +62,10 @@ public class Ticket {
 
     }
 
+    public Sector getStadiumSector() {
+        return stadiumSector;
+    }
+
     public BigDecimal getPrice() {
         return price;
     }

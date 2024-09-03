@@ -21,6 +21,9 @@ public class TicketService {
         for (Ticket ticket : ticketsForSectorA) {
             System.out.println(ticket);
         }
+
+        System.out.println();
+        System.out.println();
     }
 
     public static List<Ticket> getTicketsForSector(Ticket[] tickets, Sector sector) {

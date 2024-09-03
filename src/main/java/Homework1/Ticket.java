@@ -1,5 +1,3 @@
-package Homework1;
-
 import java.math.BigDecimal;
 
 public class Ticket {
@@ -60,6 +58,10 @@ public class Ticket {
                 ", allowedWeight=" + allowedWeight + "g" +
                 '}';
 
+    }
+
+    public Sector getStadiumSector() {
+        return stadiumSector;
     }
 
     public BigDecimal getPrice() {

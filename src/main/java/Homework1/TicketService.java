@@ -12,6 +12,13 @@ public class TicketService {
             System.out.println(ticket.toString());
         }
         System.out.println("Founded ticket: " + findByID(tickets, "3").toString());
+
+        System.out.println("Creating some merge conflicts))");
+        System.out.println("Creating some merge conflicts))");
+        System.out.println("Creating some merge conflicts))");
+        System.out.println("Creating some merge conflicts))");
+        System.out.println("Creating some merge conflicts))");
+        System.out.println("Creating some merge conflicts))");
     }
 
     private static Ticket[] generateTickets(int len){

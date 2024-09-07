@@ -20,15 +20,15 @@ public class TicketService {
 
         String phone = "1234567890";
         String email = "egor.senkevich@gmail.com";
-        Client client1 = new Client(tickets.getLast());
-        Client client2 = new Client();
-        Admin admin1 = new Admin(tickets.get(0));
+        User client1 = new Client(tickets.getLast());
+        User client2 = new Client();
+        User admin1 = new Admin(tickets.get(0));
 
-        System.out.println("Checking clients ticket: " + admin1.checkTicket(tickets.get(2), client2));
+        System.out.println("Checking clients ticket: " + ((Admin) admin1).checkTicket(tickets.get(2), client2));
 
         //static polymorphism
-        client1.shareTicket(phone, client1.getTicket(), client2);
-        client1.shareTicket(phone, email, client1.getTicket(), client2);
+        ((Client) client1).shareTicket(phone, client1.getTicket(), client2);
+        ((Client) client1).shareTicket(phone, email, client1.getTicket(), client2);
 
         //dynamic polymorphism
         client1.printRole();

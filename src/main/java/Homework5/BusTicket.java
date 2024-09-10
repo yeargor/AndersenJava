@@ -1,6 +1,7 @@
 package Homework5;
 
 import com.google.gson.annotations.JsonAdapter;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -17,6 +18,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
 public class BusTicket {
 
     @NullableWarning(message = "ticketClass cannot be null")
@@ -31,13 +33,6 @@ public class BusTicket {
     @NullableWarning(message = "price cannot be null")
     @EvenWarning(message = "price must be even")
     private int price;
-
-    protected BusTicket(String ticketClass, String ticketType, LocalDate startDate, int price) {
-        this.ticketClass = ticketClass;
-        this.ticketType = ticketType;
-        this.startDate = startDate;
-        this.price = price;
-    }
 
     public static BusTicket createBusTicket(String ticketClass, String ticketType, LocalDate startDate, int price) {
 

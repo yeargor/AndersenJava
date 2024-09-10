@@ -1,27 +1,33 @@
-package Homework4;
+package tools.validators.subValidators;
 
+import tools.validators.IValidator;
+import tools.warnings.NullableWarning;
 import java.lang.reflect.Field;
 
-public class NullValidator {
+public class NullValidator implements IValidator {
 
-    public static void checkForNulls(Object obj) {
+    public String validate(Object obj) {
 
         Class<?> aClass = obj.getClass();
         Field[] fields = aClass.getDeclaredFields();
 
         for (Field field : fields) {
             if (field.isAnnotationPresent(NullableWarning.class)) {
+                field.setAccessible(true);
                 try {
-                    field.setAccessible(true);
                     Object value = field.get(obj);
+                    NullableWarning annotation = field.getAnnotation(NullableWarning.class);
+                    String message = annotation.message();
 
                     if (value == null) {
-                        System.out.println("Variable " + field.getName() + " is null in " + aClass.getSimpleName());
+                        return message;
                     }
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
             }
         }
+
+        return null;
     }
 }

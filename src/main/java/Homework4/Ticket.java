@@ -7,7 +7,6 @@ public class Ticket extends ClassTemplate {
 
     private String concertHall;
     private int eventCode;
-    @NullableWarning
     private long time;
     private Boolean isPromo;
     private Sector stadiumSector;
@@ -16,15 +15,12 @@ public class Ticket extends ClassTemplate {
     private final BigDecimal price = new BigDecimal("9.99");
 
     public Ticket() {
-
-        NullValidator.checkForNulls(this);
         this.createdAt = System.currentTimeMillis() / 1000L;
 
     }
 
     public Ticket(String id, String concertHall, int eventCode, long time, Boolean isPromo, Sector stadiumSector, float allowedWeight) {
 
-        NullValidator.checkForNulls(this);
         setId(validateLength(id, "id",4));
         this.concertHall = validateLength(concertHall,"concertHall", 10);
         this.eventCode = validateRange(eventCode,"eventCode",100,999);
@@ -38,7 +34,6 @@ public class Ticket extends ClassTemplate {
 
     public Ticket(String concertHall, int eventCode, long time) {
 
-        NullValidator.checkForNulls(this);
         this.concertHall = validateLength(concertHall, "concertHall", 10);
         this.eventCode = validateRange(eventCode, "eventCode",100,999);
         this.time = time;

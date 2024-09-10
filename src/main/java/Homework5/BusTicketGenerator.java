@@ -62,18 +62,15 @@ public class BusTicketGenerator {
         for (int i = 0; i < len; i++) {
             int wayToChoose = random.nextInt(3);
             switch (wayToChoose) {
-                case 0:
-                    dates.add(null);
-                    break;
-                case 1:
+                case 0 -> dates.add(null);
+                case 1 -> {
                     LocalDate futureDate = LocalDate.now().plus(random.nextInt(10) + 1, ChronoUnit.YEARS);
                     dates.add(futureDate);
-                    break;
-                case 2:
-                    dates.add(LocalDate.now());
-                    break;
+                }
+                case 2 -> dates.add(LocalDate.now());
             }
         }
+
         return dates;
     }
 }

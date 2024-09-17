@@ -1,5 +1,7 @@
 package Homework4;
 
+import tools.warnings.NullableWarning;
+
 public abstract class ClassTemplate {
 
     @NullableWarning

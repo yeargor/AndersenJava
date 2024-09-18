@@ -10,7 +10,7 @@ public class MyHashMap<K,V> implements Iterable<Map.Entry<K, V>>{
 
     private float loadfactor;
     private int capacity;
-    private int size = 0;
+    private int size;
     private Node<K, V>[] table;
 
     public MyHashMap() {
@@ -27,13 +27,6 @@ public class MyHashMap<K,V> implements Iterable<Map.Entry<K, V>>{
         this.capacity = capacity;
         this.loadfactor = loadfactor;
         this.table = new Node[capacity];
-    }
-
-    @AllArgsConstructor
-    private static class Node<K,V>{
-        K key;
-        V value;
-        Node<K,V> next;
     }
 
     /* ---------------- hashMap methods -------------- */
@@ -114,7 +107,7 @@ public class MyHashMap<K,V> implements Iterable<Map.Entry<K, V>>{
     }
 
     public int getSize() {
-        return MyHashMap.this.size;
+        return size;
     }
 
     private int hash(Object key) {
@@ -142,19 +135,26 @@ public class MyHashMap<K,V> implements Iterable<Map.Entry<K, V>>{
         }
     }
 
+    @AllArgsConstructor
+    private static class Node<K,V>{
+        K key;
+        V value;
+        Node<K,V> next;
+    }
+
     /* ---------------- entryIterator -------------- */
 
     @Override
     public Iterator<Map.Entry<K, V>> iterator() {
-        return new entryIterator();
+        return new EntryIterator();
     }
 
-    public class entryIterator implements Iterator<Map.Entry<K, V>>{
+    public class EntryIterator implements Iterator<Map.Entry<K, V>>{
 
         private int bucketIndex = 0;
         private Node<K, V> currentNode = null;
 
-        public entryIterator(){
+        public EntryIterator(){
             moveNext();
         }
 
@@ -221,7 +221,7 @@ public class MyHashMap<K,V> implements Iterable<Map.Entry<K, V>>{
 
         @Override
         public int size() {
-            return MyHashMap.this.size;
+            return size;
         }
     }
 

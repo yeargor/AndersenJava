@@ -7,7 +7,7 @@ public class MyArrayList<E> extends AbstractList<E> {
 
     private static final int DEFAULT_CAPACITY = 10;
     private Object elements[];
-    private int size = 0;
+    private int size;
 
     public MyArrayList() {
         elements = new Object[DEFAULT_CAPACITY];
@@ -24,17 +24,13 @@ public class MyArrayList<E> extends AbstractList<E> {
 
     @Override
     public E get(int index) {
-        if (index >= size || index < 0) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
-        }
+        checkSize(index);
         return (E) elements[index];
     }
 
     @Override
     public void add(int index, E element) {
-        if (index > size || index < 0) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
-        }
+        checkSize(index);
         for (int i = size - 1; i >= index; i--) {
             elements[i + 1] = elements[i];
         }
@@ -48,9 +44,7 @@ public class MyArrayList<E> extends AbstractList<E> {
 
     @Override
     public E remove(int index) {
-        if (index >= size || index < 0) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
-        }
+        checkSize(index);
         Object item = elements[index];
         for (int i = index; i < size - 1; i++) {
             elements[i] = elements[i + 1];
@@ -66,5 +60,11 @@ public class MyArrayList<E> extends AbstractList<E> {
     private void ensureCapacity() {
         int newSize = elements.length * 2;
         elements = Arrays.copyOf(elements, newSize);
+    }
+
+    private void checkSize(int index){
+        if (index > size || index < 0) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
+        }
     }
 }

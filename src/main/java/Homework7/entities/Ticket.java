@@ -17,6 +17,7 @@ public class Ticket {
     TicketType ticketType;
     Date creation_date;
 
+    //id field is generated
     public Ticket(int user_id, TicketType ticketType, Date creation_date) {
         this.user_id = user_id;
         this.ticketType = ticketType;

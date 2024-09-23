@@ -15,4 +15,10 @@ public class User {
     int id;
     String name;
     Date creation_date;
+
+    //id field is generated
+    public User(String name, Date creation_date) {
+        this.name = name;
+        this.creation_date = creation_date;
+    }
 }

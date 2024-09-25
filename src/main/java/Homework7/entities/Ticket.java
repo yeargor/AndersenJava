@@ -13,15 +13,14 @@ import java.sql.Date;
 public class Ticket {
 
     int id;
-    int user_id;
+    int userId;
     TicketType ticketType;
-    Date creation_date;
+    Date creationDate;
 
-    //id field is generated
-    public Ticket(int user_id, TicketType ticketType, Date creation_date) {
-        this.user_id = user_id;
+    public Ticket(int userId, TicketType ticketType, Date creationDate) {
+        this.userId = userId;
         this.ticketType = ticketType;
-        this.creation_date = creation_date;
+        this.creationDate = creationDate;
     }
 
     public String getTicketTypeName() {

@@ -14,11 +14,10 @@ public class User {
 
     int id;
     String name;
-    Date creation_date;
+    Date creationDate;
 
-    //id field is generated
-    public User(String name, Date creation_date) {
+    public User(String name, Date creationDate) {
         this.name = name;
-        this.creation_date = creation_date;
+        this.creationDate = creationDate;
     }
 }

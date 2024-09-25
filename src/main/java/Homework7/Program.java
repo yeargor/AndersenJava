@@ -15,13 +15,6 @@ public class Program {
         TicketDao ticketDao = DaoFactory.createTicketDao();
         UserDao userDao = DaoFactory.createUserDao();
 
-//        int amount = 5;
-//        Ticket[] ticketsArray = generateUserTickets(amount,5);
-//
-//        for (Ticket i : ticketsArray){
-//            ticketDao.insert(i);
-//        }
-
         System.out.println("ticket with id = 8: " + ticketDao.findById(8));
         System.out.println("user with id = 1: " + userDao.findById(1));
 
@@ -34,17 +27,15 @@ public class Program {
         for(Ticket ticket : tickets){
             System.out.println(ticket.toString());
         }
-
-        //ticketDao.deleteById(29);
     }
 
-    private static Ticket[] generateUserTickets(int amount, int user_id){
+    private static Ticket[] generateUserTickets(int amount, int userId){
 
         Random random = new Random();
         Ticket[] tickets = new Ticket[amount];
 
         for(int i = 0; i < amount; i++){
-            tickets[i] = new Ticket(user_id, Ticket.TicketType.values()[random.nextInt(Ticket.TicketType.values().length)], new Date(System.currentTimeMillis()));
+            tickets[i] = new Ticket(userId, Ticket.TicketType.values()[random.nextInt(Ticket.TicketType.values().length)], new Date(System.currentTimeMillis()));
         }
 
         return tickets;

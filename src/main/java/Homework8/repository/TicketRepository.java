@@ -11,9 +11,7 @@ public class TicketRepository {
 
     public void createTicket(Ticket ticket){
         try(Session session = JDBCConfig.getSession()){
-
             session.beginTransaction();
-
             session.persist(ticket);
             session.getTransaction().commit();
         }catch (Exception e){
@@ -24,8 +22,7 @@ public class TicketRepository {
     public Ticket getTicketById(int id){
         try(Session session = JDBCConfig.getSession()){
             session.beginTransaction();
-            Ticket ticket = session.get(Ticket.class, id);
-            return ticket;
+            return session.get(Ticket.class, id);
         }catch(Exception e){
             System.out.println(e.getMessage());
         }
@@ -35,7 +32,6 @@ public class TicketRepository {
     public Set<Ticket> getTicketsByUserId(int userId){
         try(Session session = JDBCConfig.getSession()){
             session.beginTransaction();
-
             User user = session.get(User.class, userId);
             return user.getTickets();
         }catch(Exception e){
@@ -48,7 +44,6 @@ public class TicketRepository {
     public void updateTicketType(int id, TicketType newTicketType){
         try(Session session = JDBCConfig.getSession()){
             session.beginTransaction();
-
             Ticket ticket = session.get(Ticket.class, id);
             ticket.setTicketType(newTicketType);
             session.merge(ticket);

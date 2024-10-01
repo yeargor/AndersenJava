@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 5.3//EN"
+        "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.drive_class">org.postgresql.Driver</property>
+
+        <property name="connection.pool_size">1</property>
+
+        <property name="connection.url">jdbc:postgresql://localhost/my_ticket_service_db</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">pleasecomein</property>
+
+        <property name="hibernate.connection.characterEncoding">utf8</property>
+        <property name="show_sql">false</property>
+        <property name="format_sql">false</property>
+        <property name="connection.autocommit">true</property>
+        <property name="default_schema">public</property>
+        <property name="hbm2ddl.auto">update</property>
+
+        <property name="hibernate.current_session_context_class">thread</property>
+        <mapping class="Homework8.model.User"/>
+
+    </session-factory>
+</hibernate-configuration>

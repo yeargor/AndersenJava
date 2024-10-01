@@ -26,10 +26,10 @@ public class Ticket {
     TicketType ticketType;
     Date creationDate;
 
-    public Ticket(User user, TicketType ticketType, Date creationDate) {
+    public Ticket(User user, TicketType ticketType) {
         this.user = user;
         this.ticketType = ticketType;
-        this.creationDate = creationDate;
+        this.creationDate = new Date(System.currentTimeMillis());
     }
 
     public enum TicketType {

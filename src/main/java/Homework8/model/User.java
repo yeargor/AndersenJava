@@ -24,8 +24,8 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Ticket> tickets;
 
-    public User(String name, Date creationDate) {
+    public User(String name) {
         this.name = name;
-        this.creationDate = creationDate;
+        this.creationDate = new Date(System.currentTimeMillis());
     }
 }

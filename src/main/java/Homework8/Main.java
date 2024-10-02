@@ -14,10 +14,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        User user  = new User("Yahor4", new Date(System.currentTimeMillis()));
+        User user  = new User("Yahor4");
         USER_REPOSITORY.createUser(user);
 
-        Ticket ticket = new Ticket(user, TicketType.DAY, new Date(System.currentTimeMillis()));
+        Ticket ticket = new Ticket(user, TicketType.DAY);
         TICKET_REPOSITORY.createTicket(ticket);
 
         System.out.println(TICKET_REPOSITORY.getTicketById(42));

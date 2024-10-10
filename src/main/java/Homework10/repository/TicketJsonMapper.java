@@ -1,10 +1,9 @@
-package Homework10.config;
+package Homework10.repository;
 
 import Homework10.model.Ticket;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -16,7 +15,7 @@ import java.util.List;
 @Component
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class TicketJsonMapper {
-    @Value("${tickets.file.path}")
+    @Value("${tickets.path}")
     Resource ticketsFile;
     ObjectMapper objectMapper;
 

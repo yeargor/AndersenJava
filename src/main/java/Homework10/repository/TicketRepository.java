@@ -11,11 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 @AllArgsConstructor
 public class TicketRepository {
-    private final SessionFactory SESSION_FACTORY;
+    private final SessionFactory sessionFactory;
 
     @Transactional
     public void createTicket(Ticket ticket){
-        Session session = SESSION_FACTORY.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         User user = ticket.getUser();
         user.setActive(true);
         session.merge(user);

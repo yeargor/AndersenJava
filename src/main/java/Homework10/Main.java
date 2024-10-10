@@ -1,6 +1,6 @@
 package Homework10;
 
-import Homework10.config.TicketJsonMapper;
+import Homework10.repository.TicketJsonMapper;
 import Homework10.model.Ticket;
 import Homework10.model.User;
 import Homework10.repository.TicketRepository;
@@ -18,13 +18,13 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        System.out.println("User before update: " + USER_REPOSITORY.getUser(8));
         User user = USER_REPOSITORY.getUser(8);
+        System.out.println("User before update: " + user);
         TICKET_REPOSITORY.createTicket(new Ticket(user, Ticket.TicketType.DAY));
         System.out.println("User after update: " + USER_REPOSITORY.getUser(8));
 
-        TicketJsonMapper TICKET_JSON_MAPPER = CONTEXT.getBean(TicketJsonMapper.class);
-        List<Ticket> ticketList = TICKET_JSON_MAPPER.loadTicketsFromFile();
+        TicketJsonMapper ticketJsonMapper = CONTEXT.getBean(TicketJsonMapper.class);
+        List<Ticket> ticketList = ticketJsonMapper.loadTicketsFromFile();
         System.out.println(ticketList);
     }
 }

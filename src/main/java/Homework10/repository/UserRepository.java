@@ -11,11 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 @AllArgsConstructor
 public class UserRepository {
 
-    private final SessionFactory SESSION_FACTORY;
+    private final SessionFactory sessionFactory;
 
     @Transactional
     public User getUser(int userId) {
-        Session session = SESSION_FACTORY.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         return session.get(User.class, userId);
     }
 }

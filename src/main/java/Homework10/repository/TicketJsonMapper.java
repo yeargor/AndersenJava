@@ -24,10 +24,9 @@ public class TicketJsonMapper {
     }
 
     public List<Ticket> loadTicketsFromFile() throws IOException {
-        List<Ticket> tickets = objectMapper.readValue(
+        return objectMapper.readValue(
                 ticketsFile.getInputStream(),
                 new TypeReference<List<Ticket>>() {}
         );
-        return new ArrayList<>(tickets);
     }
 }

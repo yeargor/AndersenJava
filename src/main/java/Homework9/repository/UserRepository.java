@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class UserRepository {
 
-    private final SessionFactory SESSION_FACTORY;
+    private final SessionFactory sessionFactory;
 
     public void createUser(User user){
-        try(Session session = SESSION_FACTORY.getCurrentSession()){
+        try(Session session = sessionFactory.getCurrentSession()){
             session.beginTransaction();
             session.persist(user);
             session.getTransaction().commit();
@@ -25,7 +25,7 @@ public class UserRepository {
     }
 
     public User getUser(int userId){
-        try(Session session = SESSION_FACTORY.getCurrentSession()){
+        try(Session session = sessionFactory.getCurrentSession()){
             session.beginTransaction();
             return session.get(User.class, userId);
         }catch(Exception e){
@@ -35,7 +35,7 @@ public class UserRepository {
     }
 
     public void deleteUser(int userId){
-        try(Session session = SESSION_FACTORY.getCurrentSession()){
+        try(Session session = sessionFactory.getCurrentSession()){
             session.beginTransaction();
             User user = session.get(User.class, userId);
             session.remove(user);
@@ -46,7 +46,7 @@ public class UserRepository {
     }
 
     public void updateUserAndTickets(int userId, TicketType newTicketType){
-        try(Session session = SESSION_FACTORY.getCurrentSession()){
+        try(Session session = sessionFactory.getCurrentSession()){
             session.beginTransaction();
             User user = session.get(User.class, userId);
             for(Ticket ticket : user.getTickets()){

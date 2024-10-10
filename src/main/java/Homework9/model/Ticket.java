@@ -21,7 +21,7 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "userId")
     @ToString.Exclude
-    private User user;
+    User user;
     @Enumerated(EnumType.STRING)
     TicketType ticketType;
     Date creationDate;

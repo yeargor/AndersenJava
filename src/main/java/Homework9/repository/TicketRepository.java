@@ -12,10 +12,10 @@ import java.util.Set;
 @Component
 @AllArgsConstructor
 public class TicketRepository {
-    private final SessionFactory SESSION_FACTORY;
+    private final SessionFactory sessionFactory;
 
     public void createTicket(Ticket ticket){
-        try(Session session = SESSION_FACTORY.getCurrentSession()){
+        try(Session session = sessionFactory.getCurrentSession()){
             session.beginTransaction();
             session.persist(ticket);
             session.getTransaction().commit();
@@ -25,7 +25,7 @@ public class TicketRepository {
     }
 
     public Ticket getTicketById(int id){
-        try(Session session = SESSION_FACTORY.getCurrentSession()){
+        try(Session session = sessionFactory.getCurrentSession()){
             session.beginTransaction();
             return session.get(Ticket.class, id);
         }catch(Exception e){
@@ -35,7 +35,7 @@ public class TicketRepository {
     }
 
     public Set<Ticket> getTicketsByUserId(int userId){
-        try(Session session = SESSION_FACTORY.getCurrentSession()){
+        try(Session session = sessionFactory.getCurrentSession()){
             session.beginTransaction();
             User user = session.get(User.class, userId);
             return user.getTickets();
@@ -46,7 +46,7 @@ public class TicketRepository {
     }
 
     public void updateTicketType(int id, TicketType newTicketType){
-        try(Session session = SESSION_FACTORY.getCurrentSession()){
+        try(Session session = sessionFactory.getCurrentSession()){
             session.beginTransaction();
             Ticket ticket = session.get(Ticket.class, id);
             ticket.setTicketType(newTicketType);

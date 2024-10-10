@@ -22,7 +22,7 @@ public class User {
     String name;
     Date creationDate;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Ticket> tickets;
+    Set<Ticket> tickets;
 
     public User(String name) {
         this.name = name;

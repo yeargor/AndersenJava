@@ -36,7 +36,7 @@ class TicketServiceTest {
     }
 
     @Test
-    void findById_Positive() {
+    void findById_whenIdExists_returnTicket() {
         when(ticketRepository.findById(1)).thenReturn(Optional.of(ticket));
         Ticket result = ticketService.findById(1);
         assertThat(ticket).usingRecursiveComparison().isEqualTo(result);
@@ -44,7 +44,7 @@ class TicketServiceTest {
     }
 
     @Test
-    void findById_Negative() {
+    void findById_whenIdDoesNotExist_returnNull() {
         when(ticketRepository.findById(1)).thenReturn(Optional.empty());
         Ticket result = ticketService.findById(1);
         assertNull(result);
@@ -52,7 +52,7 @@ class TicketServiceTest {
     }
 
     @Test
-    void findById_Corner() {
+    void findById_whenIdIsMaxValue_returnNull() {
         when(ticketRepository.findById(Integer.MAX_VALUE)).thenReturn(Optional.empty());
         Ticket result = ticketService.findById(Integer.MAX_VALUE);
         assertNull(result);
@@ -60,7 +60,7 @@ class TicketServiceTest {
     }
 
     @Test
-    void save_Positive() {
+    void save_whenIdExists_returnTicket() {
         when(ticketRepository.save(ticket)).thenReturn(ticket);
         Ticket result = ticketService.save(ticket);
         assertThat(ticket).usingRecursiveComparison().isEqualTo(result);
@@ -68,7 +68,7 @@ class TicketServiceTest {
     }
 
     @Test
-    void save_Negative() {
+    void save_whenIdDoesNotExist_returnNull() {
         when(ticketRepository.save(null)).thenThrow(new IllegalArgumentException("Ticket cannot be null"));
         Exception exception = assertThrows(IllegalArgumentException.class, () -> ticketService.save(null));
         assertEquals("Ticket cannot be null", exception.getMessage());
@@ -76,7 +76,7 @@ class TicketServiceTest {
     }
 
     @Test
-    void save_Corner() {
+    void save_whenIdIsMaxValue_returnNull() {
         Ticket ticket = new Ticket(Integer.MAX_VALUE, user, TicketType.DAY, LocalDate.now());
         when(ticketRepository.save(ticket)).thenReturn(ticket);
         Ticket result = ticketService.save(ticket);

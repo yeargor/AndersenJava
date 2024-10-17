@@ -7,10 +7,14 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class TicketService {
-    
+
     private final TicketRepository ticketRepository;
 
     public Ticket findById(Integer id) {
         return ticketRepository.findById(id).orElse(null);
+    }
+
+    public Ticket save(Ticket ticket) {
+        return ticketRepository.save(ticket);
     }
 }
